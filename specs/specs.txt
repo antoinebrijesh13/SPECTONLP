@@ -1,0 +1,1 @@
+((dw.is_DiscPresent == IN_NO_ACTIVE_CHILD) && !((!(99 > dw.temporalCounter_i1) && (dw.is_c4_model == IN_Inserting)))) -> (rtDW.is_DiscPresent == IN_NO_ACTIVE_CHILD)

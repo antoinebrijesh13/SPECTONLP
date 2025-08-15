@@ -1,0 +1,33 @@
+{
+    "paths": {
+      "input": "specs/specs.txt",
+      "base_folder": "",
+      "cache": "cache/",
+      "formatter_script": "formatter.py",
+      "pattern_checker_script": "pattern_checker.py",
+      "simplifier_script": "simplifier.py",
+      "verify_equivalence_script": "verify_equivalence.py",
+      "nl_translation_script": "nl_translation.py",
+      "simplified_expression_file": "cache/simplified_expression.txt",
+      "final_result_file": "cache/Final_result.txt",
+      "nlp_translation_file": "NATURAL LANGUAGE"
+    },
+    "simplifier": {
+      "model": "gemini-2.5-flash",
+      "temperature": 0.1,
+      "top_p": 0.95,
+      "top_k": 64,
+      "max_output_tokens": 8192
+    },
+    "natural_language": {
+      "model": "gemini-2.5-flash",
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "top_k": 50,
+      "max_output_tokens": 4096
+    },
+    "conditions": {
+      "distinct_variable_threshold": 5
+    }
+  }
+  
