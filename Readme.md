@@ -3,15 +3,11 @@
 
 Follow these steps to run the SPECTONLP tool:
 
----
-
 ## 1. Clone the Repository
 Clone the repository into your working directory using:
-
-```bash
+---
 git clone https://github.com/antoinebrijesh13/SPECTONLP.git
 ````
-
 ---
 
 ## 2. Install Required Packages
