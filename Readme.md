@@ -1,5 +1,3 @@
-Here’s your content properly formatted as a `.md` file:
-
 ````markdown
 # SPECTONLP - Tool Instructions
 
