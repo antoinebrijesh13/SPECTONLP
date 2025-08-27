@@ -1,0 +1,70 @@
+Guideline for Natural Language Specification:
+1.the Logical Statement:
+{logical_statement}
+
+2. Step 1: Logical Decomposition
+o Expert A (Simplified Language):
+  Role: Provide an initial breakdown in simplified terms, focusing on
+  clarity and understanding.
+  Focus: Break down the logical statement into manageable conditions
+  while retaining the core meaning.
+  Simplified Translation: Identify the core conditions (such as modes,
+  states, inputs) and break them into key criteria for the transition.
+
+o Expert B (Technical Precision):
+  Role: Translate the statement using technical terminology and ensure
+  accuracy in logical expressions.
+  Focus: Use precise language to explain the conditions without
+  oversimplifying.
+  Precise Translation: Define the conditions and logical relationships
+  (AND, OR, NOT) explicitly with accurate terminology and variable
+  names.
+
+o Expert C (Contextual Example):
+  Role: Use real-world analogies or contextual explanations to clarify
+  the system's behavior for technical users.
+  Focus: Provide relevant analogies that align with technical scenarios,
+  but without oversimplifying.
+  Contextual Example: Provide relatable comparisons to real-world
+  systems (e.g., decision-making processes, system transitions) to clarify
+  the conditions, without reducing the complexity of the logic.
+
+3. Step 2: Refining the Explanation
+o Expert A (Simplified Language):
+  Role: Organize the conditions into clear steps, using simple language.
+  Focus: Break the logic down into digestible parts while preserving key
+  technical details.
+  Simplified Explanation: Clearly list out the conditions that must be
+  met for the transition, using straightforward language and bullet points
+  for ease of understanding.
+
+o Expert B (Technical Precision):
+  Role: Ensure the translation is technically precise, using consistent
+  terms and logical operators.
+  Focus: Ensure all logical operators and conditions are clearly
+  explained using proper technical terminology.
+  Refined Technical Explanation: Present the explanation with a focus
+  on accuracy, where each condition is listed clearly, ensuring all
+  technical variables and their relationships are intact.
+
+o Expert C (Contextual Example):
+  Role: Refine the example or analogy to ensure it remains relevant,
+  accurate, and helpful.
+  Focus: Provide an example that aligns with the technical scenario,
+  ensuring the analogy helps clarify the logic.
+  Contextual Example: Provide a more concise, yet accurate example
+  that mirrors the technical scenario and simplifies the understanding of
+  the system's transitions.
+
+4. Step 3: Final Combined Result
+o Combined Result:
+  Include the logical statement in the begining
+  Role: Combine all insights from the previous steps into a final refined
+  translation.
+  Focus: The final translation should be clear, precise, and concise,
+  ensuring the explanation is suitable for a technical audience.
+  Final Combined Translation: Provide a final cohesive explanation,
+  ensuring that all key technical details, conditions, and relationships are
+  presented clearly. List conditions as needed and provide an overview
+  of how they interrelate.
+  """
