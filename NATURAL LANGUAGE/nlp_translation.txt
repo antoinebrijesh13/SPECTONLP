@@ -1,19 +1,13 @@
 FINAL TRANSLATION
 ================
 
-  ((dw.is_DiscPresent == IN_NO_ACTIVE_CHILD) && ((99 > dw.temporalCounter_i1) || !(dw.is_c4_model == IN_Inserting))) -> (rtDW.is_DiscPresent == IN_NO_ACTIVE_CHILD)
+  This logical statement defines the conditions under which the system's `is_DiscPresent` status *remains* as `IN_NO_ACTIVE_CHILD` (indicating no active disc is currently present or being processed). It does not specify how the system initially transitions *into* this state.
 
-  This logical statement describes a condition under which the system's `is_DiscPresent` status *remains* or is confirmed as `IN_NO_ACTIVE_CHILD` (meaning no active disc is recognized). It does not define how the system *enters* this state.
+  The system will maintain the `IN_NO_ACTIVE_CHILD` status if **all** of the following conditions are met:
 
-  The statement dictates that:
-**"If the system's internal Disc Present status is currently 'No Active Child', AND (either a specific internal timer (`temporalCounter_i1`) is less than 99, OR the 'c4_model' state machine is NOT in its 'Inserting' state), THEN the runtime Disc Present status will be 'No Active Child'."**
+  1.  **Current Disc State:** The system's current state for disc presence (`dw.is_DiscPresent`) is already `IN_NO_ACTIVE_CHILD`.
+  2.  **Transitional or Operational State Check:** One of the following two sub-conditions must be true:
+    *   **Temporal Counter Condition:** The internal temporal counter `dw.temporalCounter_i1` has a value less than 99. This often signifies that a specific delay or grace period has not yet fully elapsed.
+    *   **Insertion State Condition:** The `c4_model` state is *not* `IN_Inserting`. This ensures the system is not actively engaged in the process of inserting a disc.
 
-  More precisely, this condition holds true if:
-  1.  **`dw.is_DiscPresent == IN_NO_ACTIVE_CHILD`**: The system's current internal belief is that no disc is active or present.
-  2.  **`&&` (AND)**: This must be combined with the following complex condition.
-  3.  **`((99 > dw.temporalCounter_i1) || !(dw.is_c4_model == IN_Inserting))`**: One of the following two sub-conditions must be true:
-    *   **`99 > dw.temporalCounter_i1`**: A specific system timer (`temporalCounter_i1`) has not yet reached a value of 99. This could represent a short grace period or a timeout not yet elapsed.
-    *   **`||` (OR)**: This allows either of the two sub-conditions to be true.
-    *   **`!(dw.is_c4_model == IN_Inserting)`**: The state machine for `c4_model` (likely related to a specific disc type or mechanism) is *not* currently in its `IN_Inserting` state. This means a disc insertion process for that model is either not active or has completed.
-
-  If all these conditions on the left side of the implication (`->`) are met, then the system's runtime `is_DiscPresent` status (`rtDW.is_DiscPresent`) is confirmed as `IN_NO_ACTIVE_CHILD`. This rule ensures that the "no active disc" state persists unless a disc insertion *is* in progress for the `c4_model` AND the timer has exceeded 99, or if the initial `dw.is_DiscPresent` state changes.
+  In summary, if the system currently reports no active disc, and it is either within a defined temporal window or not actively performing a disc insertion, then the `is_DiscPresent` status will continue to be `IN_NO_ACTIVE_CHILD`. This rule helps stabilize the 'no disc' state under specific operational and temporal constraints, preventing premature state changes.

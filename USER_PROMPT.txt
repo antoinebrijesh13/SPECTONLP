@@ -1,0 +1,87 @@
+Guideline for simplifying the logical statement
+Example input format: 
+simplified statement: (A && ((!B && C) || (!B && !C && D) || (!B && !C && !D && E))) -> F
+A = dw.is_ModeManager == IN_Standby
+B = inp.DiscEject
+C = inp.RadioReq == FM
+D = inp.RadioReq == CD
+E = inp.RadioReq == AM
+F = rtDW.is_ModeManager == IN_ON
+
+Step 1: Split the logical statement into pieces according to the way they are grouped
+
+the example logical statement can be splitted into the following:
+
+(A 
+&& 
+((!B && C) 
+|| 
+(!B && !C && D) 
+|| (!B && !C && !D && E))) -> F
+Step 2: Simplify each part by applying the De Morgan's rule :
+This rule is only applicable to the parts left to the implication (->)
+Step3:Joining the simplified parts back together:
+After step 3: 
+(A && ((!B && C) || (!B && !C && D) || (!B && !C && !D && E))) -> F
+Step4: Factoring out the common term::
+Look for a common term if exist factor it out
+example:
+(!B && C) || (!B && !C && D) || (!B && !C && !D && E)
+We can factor out !B:
+After step 4:Further Simplification can be done using the following rules if necessary or ignore this step::
+Rules:
+Identity Laws:
+A && TRUE ≡ A
+A || FALSE ≡ A
+Domination Laws:
+A && FALSE ≡ FALSE
+A || TRUE ≡ TRUE
+Idempotent Laws:
+A && A ≡ A
+A || A ≡ A
+Commutative Laws:
+A && B ≡ B && A
+A || B ≡ B || A
+Associative Laws:
+(A && B) && C ≡ A && (B && C)
+(A || B) || C ≡ A || (B || C)
+Distributive Laws:
+A && (B || C) ≡ (A && B) || (A && C)
+A || (B && C) ≡ (A || B) && (A || C)
+Absorption Laws:
+A && (A || B) ≡ A
+A || (A && B) ≡ A
+Negation Laws:
+A && !A ≡ FALSE
+A || !A ≡ TRUE
+Other Laws:
+A || (!A && B) = A || B
+Example:
+
+
+(A &&!B && (C || (!C && D) || (!C && !D && E)) -> F
+Further simplification
+Simplify the inner part: C || (!C && D) || (!C && !D && E)
+We know that A || (!A && B) is equivalent to A || B.
+Let A = C and B = D. So, C || (!C && D) simplifies to C || D.
+
+Substitute the simplified part back:
+The inner part now becomes (C || D) || (!C && !D && E).
+
+Apply De Morgan's Law: !C && !D is equivalent to !(C || D).
+So, the expression is (C || D) || (!(C || D) && E).
+Apply A || (!A && B) = A || B again:
+Let A = C || D and B = E.
+
+Therefore, the simplified form of the given logical statement is:
+!B && (C || D || E)
+Final simplified logical statement: (A &&!B && (C || D || E) -> F
+Step 5:  change the term names back to their original names
+Example:
+Statement : (A &&!B && (C || D || E) -> F
+Using the variable mapping from the input Change the variable name to its originals
+Note: if two names are mapped to a single variable example: (C -> \"dw.is_ON == IN_CDMode\" = \"rtDW.is_ON == IN_CDMode\")
+The first variable name goes at the left of the implication and the second variable name goes to the right of the variable name
+
+display the final result strictly in the following format:
+simplified final statement : (dw.is_ModeManager == IN_Standby && !inp.DiscEject && (inp.RadioReq == FM ||inp.RadioReq ==CD || inp.RadioReq == AM)) -> rtDW.is_ModeManager == IN_ON
